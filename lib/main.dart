@@ -51,6 +51,7 @@ class _MyAppState extends State<MyApp> {
       else{
         harga = harga * 5; //nilai variabel harga terbaru
       }
+      total+=harga; //menghitung total pengeluaran berdasarkan harga dari tiap barang-barang
       listViewItem.add("$barang "+ '$harga'); //untuk menambahkan daftar pada ListView
     });
   }
@@ -165,6 +166,31 @@ class _MyAppState extends State<MyApp> {
                         style: TextStyle(fontSize: 15),
                       ));
                 }).toList()),
+              ),
+              Container(
+                height: 30.0,
+                width: double.infinity,
+                child: Text(
+                  "Total Pengeluaran: "+ '$total',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14, color: Colors.black87),
+                ),
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                      color: Colors.purple,
+                    ),
+                    right: BorderSide(
+                      color: Colors.purple,
+                    ),
+                    left: BorderSide(
+                      color: Colors.purple,
+                    ),
+                    bottom: BorderSide(
+                      color: Colors.purple,
+                    ),
+                  )
+                ),
               ),
             ],
           ),
