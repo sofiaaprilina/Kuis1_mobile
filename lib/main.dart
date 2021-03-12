@@ -16,6 +16,16 @@ class _MyAppState extends State<MyApp> {
   String barang = ""; //variabel untuk nama barang
   int harga = 0; //variabel untuk harga
   int total = 0; //variabel untuk menghitung total
+  var jumlah = ["1", "2", "3", "4", "5"]; //list untuk jumlah barang
+  String newValue = "1"; //variabel untuk mengubah value pada dropdown
+
+  void dropdownOnChanged(String changeValue) {
+    //fungsi yang dipanggil setiap ada perubahan 
+    setState(() {
+      //mengubah nilai value pada dropdown sesuai dengan value yang dipilih
+      newValue = changeValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) { //widget yang dijalankan saat dibuild
@@ -60,6 +70,28 @@ class _MyAppState extends State<MyApp> {
                 ),
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly], //mengatur penerimaan input hanya untuk angka
                 keyboardType: TextInputType.number, //mengatur tampilan keyboard ha untuk angka
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    'Masukkan Jumlah',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  DropdownButton<String>(
+                    items: jumlah.map(
+                      (String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      },
+                    ).toList(),
+                    value: newValue,
+                    onChanged: dropdownOnChanged,
+                  ),
+                ],
               ),
             ],
           ),
