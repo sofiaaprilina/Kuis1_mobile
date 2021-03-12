@@ -136,6 +136,16 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
               ),
+              Container(
+                width: double.infinity,
+                height: 50,
+                child: RaisedButton(
+                  onPressed: hitungHarga,
+                  color: Colors.purple,
+                  textColor: Colors.white,
+                  child: Text("Hitung Total"),
+                ),
+              ),
             ],
           ),
         ),
