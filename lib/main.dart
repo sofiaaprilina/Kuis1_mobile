@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
   int total = 0; //variabel untuk menghitung total
   var jumlah = ["1", "2", "3", "4", "5"]; //list untuk jumlah barang
   String newValue = "1"; //variabel untuk mengubah value pada dropdown
+  List<String> listViewItem = []; //list untuk ditampilkan pada listView
 
   void dropdownOnChanged(String changeValue) {
     //fungsi yang dipanggil setiap ada perubahan 
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
       else{
         harga = harga * 5; //nilai variabel harga terbaru
       }
+      listViewItem.add("$barang "+ '$harga'); //untuk menambahkan daftar pada ListView
     });
   }
 
@@ -145,6 +147,24 @@ class _MyAppState extends State<MyApp> {
                   textColor: Colors.white,
                   child: Text("Hitung Total"),
                 ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                child: Text(
+                  "Riwayat Pengeluaran Belanja",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  children: listViewItem.map((String value) {
+                    return Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        value,
+                        style: TextStyle(fontSize: 15),
+                      ));
+                }).toList()),
               ),
             ],
           ),
