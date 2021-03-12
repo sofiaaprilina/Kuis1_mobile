@@ -27,6 +27,33 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void hitungHarga() { //fungsi untuk menghitung harga barang
+    setState(() { //fungsi yang akan dipanggil setiap ada perubahan
+      barang = barangController.text;//mengisi nilai variabel barang sesuai dengan inputan yang ditampung controller
+      harga = int.parse(hargaController.text); //mengisi nilai variabel harga sesuai dengan inputan yang ditampung controller dan disini diubah menjadi int untuk menyesuaikan tipe variablal harga  
+      if (newValue == "1"){ //kondisi ketika value pada dropdown bernilai 1
+        harga = harga * 1; //nilai variabel harga terbaru
+      }
+      //kondisi ketika value pada dropdown bernilai 2 atau kondisi pertama tidak terpenuhi
+      else if (newValue == "2"){
+        harga = harga * 2; //nilai variabel harga terbaru
+      }
+      //kondisi ketika value pada dropdown bernilai 3 atau kondisi 1 dan 2 tidak terpenuhi
+      else if (newValue == "3"){
+        harga = harga * 3; //nilai variabel harga terbaru
+      }
+      //kondisi ketika value pada dropdown bernilai 4 atau kondisi 1,2, dan 3 tidak terpenuhi
+      else if (newValue == "4"){
+        harga = harga * 4; //nilai variabel harga terbaru
+      }
+      //kondisi ketika value pada dropdown bernilai 2 atau semua kondisi di atas tidak terpenuhi
+      else{
+        harga = harga * 5; //nilai variabel harga terbaru
+      }
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) { //widget yang dijalankan saat dibuild
     return MaterialApp(
@@ -92,6 +119,22 @@ class _MyAppState extends State<MyApp> {
                     onChanged: dropdownOnChanged,
                   ),
                 ],
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 5, bottom: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Total Harga",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    Text(
+                      '$harga',
+                      style: TextStyle(fontSize: 25),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
